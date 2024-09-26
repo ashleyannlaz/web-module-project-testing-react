@@ -6,21 +6,38 @@ import Show from './../Show';
 
 const testShow = {
     //add in approprate test data structure here.
+    name: '',
+    summary: '',
+    seasons: [
+        { id: 0, name: 'name', episodes: [] },
+        { id: 1, name: 'name 2', episodes: [] },
+        { id: 2, name: 'name 3', episodes: [] },
+    ],
+
 }
 
+//console.log(testShow)
+
 test('renders testShow and no selected Season without errors', ()=>{
+    render(<Show show={testShow}  selectedSeason="none" />)
 });
 
 test('renders Loading component when prop show is null', () => {
+    render(<Show show={null}  selectedSeason="none" />)
+    const loading = screen.getByText(/Fetching data.../i)
+    expect(loading).toBeVisible();
+
 });
 
 test('renders same number of options seasons are passed in', ()=>{
+    render(<Show show={testShow}  selectedSeason="none" />)
 });
 
 test('handleSelect is called when an season is selected', () => {
+    render(<Show show={testShow}  selectedSeason='0' />)
 });
 
-test('component renders when no seasons are selected and when rerenders with a season passed in', () => {
+test('component renders when no seasons are selected and when re-renders with a season passed in', () => {
 });
 
 //Tasks:
